@@ -1,0 +1,7 @@
+enum Category {
+	COLD_SNACKS,
+	FIRST_COURSES,
+	SECOND_COURSES,
+	DESSERTS,
+	DRINKS
+};

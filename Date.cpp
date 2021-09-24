@@ -1,10 +1,10 @@
-#include<time.h>
-#include<iostream>
+#include <time.h>
+#include <iostream>
 #include <iomanip>
 
 #include "Date.h"
 
-#pragma warning(disable : 4996);		//
+#pragma warning(disable : 4996);		//Щоб не ї###о мозок
 
 using namespace std;
 

@@ -139,10 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cook.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Category.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cook.h" />
     <ClInclude Include="Date.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
