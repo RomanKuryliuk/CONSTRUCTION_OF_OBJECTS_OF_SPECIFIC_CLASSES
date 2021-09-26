@@ -1,10 +1,10 @@
-#include<time.h>
-#include<iostream>
+#include <time.h>
+#include <iostream>
 #include <iomanip>
 
 #include "Date.h"
 
-#pragma warning(disable : 4996);		//
+#pragma warning(disable : 4996)		//Щоб не ї###о мозок
 
 using namespace std;
 
@@ -15,8 +15,8 @@ Date::Date()
 	tim = localtime(&tt);
 
 	this->day = tim->tm_mday;
-	this->mounth = tim->tm_mon;
-	this->year = tim->tm_year;
+	this->mounth = tim->tm_mon + 1;
+	this->year = tim->tm_year - 100;
 }
 
 Date::Date(int day, int mounth, int year)
@@ -39,8 +39,7 @@ Date::~Date()
 
 void Date::show()
 {
-	cout.setf(ios::fixed);		//для форматного виводу
-	cout << setw(10) << this->day << "." << this->mounth << "." << this->year << endl;
+	cout << this->day << "." << this->mounth << "." << this->year;
 }
 
 int Date::get_day()
