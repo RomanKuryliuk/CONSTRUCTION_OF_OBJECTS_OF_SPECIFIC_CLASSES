@@ -21,12 +21,12 @@ Cook::Cook(char* name, char* surname)
 	strcpy_s(this->surname, strlen(surname) + 1, surname);
 }
 
-Cook::Cook(Cook& temp)
+Cook::Cook(Cook& cook)
 {
-	this->name = new char[strlen(temp.get_name()) + 1];
-	strcpy_s(this->name, strlen(temp.get_name()) + 1, temp.get_name());
-	this->surname = new char[strlen(temp.get_surname()) + 1];
-	strcpy_s(this->surname, strlen(temp.get_surname()) + 1, temp.get_surname());
+	this->name = new char[strlen(cook.name) + 1];
+	strcpy_s(this->name, strlen(cook.name) + 1, cook.name);
+	this->surname = new char[strlen(cook.surname) + 1];
+	strcpy_s(this->surname, strlen(cook.surname) + 1, cook.surname);
 }
 
 Cook::~Cook()
