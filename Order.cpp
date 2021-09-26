@@ -10,9 +10,9 @@ Order::Order()
 	this->name = new char[7];
 	strcpy_s(this->name, sizeof "noname", "noname");
 
-	this->number = 0;
+	this->number = 1;
 
-	this->dishes = new Dish[0];
+	this->dishes = new Dish[2];
 }
 
 Order::Order(char* name, Date date, int number, Dish* dishes)
@@ -25,7 +25,11 @@ Order::Order(char* name, Date date, int number, Dish* dishes)
 	this->number = number;
 
 	for (int i = 0; i < this->number; i++) {
-		this->dishes[i] = dishes[i];
+		this->dishes[i].set_name(dishes[i].get_name());
+		this->dishes[i].set_price(dishes[i].get_price());
+		this->dishes[i].set_time(dishes[i].get_time());
+		this->dishes[i].set_category(dishes[i].get_category());
+		this->dishes[i].set_cook(dishes[i].get_cook());
 	}
 }
 
@@ -45,12 +49,7 @@ Order::Order(Order& order)
 
 Order::~Order()
 {
-	if (this->name) {
-		delete[] name;
-	}
-	if (this->dishes) {
-		delete[] dishes;
-	}
+	
 }
 
 char* Order::get_name()
@@ -75,7 +74,6 @@ Dish* Order::get_dishes()
 
 Order& Order::set_name(char* name)
 {
-	delete[] this->name;
 	this->name = new char[strlen(name) + 1];
 	strcpy_s(this->name, strlen(name) + 1, name);
 	return *this;
@@ -95,7 +93,6 @@ Order& Order::set_number(int number)
 
 Order& Order::set_dishes(Dish*)
 {
-	delete[] dishes;
 	for (int i = 0; i < this->number; i++) {
 		this->dishes[i] = dishes[i];
 	}
@@ -112,12 +109,10 @@ void Order::show()
 {
 	cout << name << ", ";
 	this->date.show();
-	cout << ", " << number << ", " << "dishes:" << endl;
+	cout << ", " << number << ", " << endl << "Страви:" << endl;
 	for (int i = 0; i < this->number; i++) {
-		dishes[i].show();
-		cout << ", ";
+		dishes[i].show();	
 	}
-	cout << endl;
 }
 
 void Order::short_show()

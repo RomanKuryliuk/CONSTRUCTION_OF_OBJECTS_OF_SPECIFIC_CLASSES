@@ -31,12 +31,6 @@ Cook::Cook(Cook& cook)
 
 Cook::~Cook()
 {
-	if (this->name) {
-		delete[] this->name;
-	}
-	if (this->surname) {
-		delete[] this->surname;
-	}
 }
 
 char* Cook::get_name()
@@ -51,7 +45,6 @@ char* Cook::get_surname()
 
 Cook& Cook::set_name(char* name)
 {
-	delete[] this->name;
 	this->name = new char[strlen(name) + 1];
 	strcpy_s(this->name, strlen(name) + 1, name);
 	return *this;
@@ -59,7 +52,6 @@ Cook& Cook::set_name(char* name)
 
 Cook& Cook::set_surname(char* surname)
 {
-	delete[] this->surname;
 	this->surname = new char[strlen(surname) + 1];
 	strcpy_s(this->surname, strlen(surname) + 1, surname);
 	return *this;
@@ -67,5 +59,5 @@ Cook& Cook::set_surname(char* surname)
 
 void Cook::show()
 {
-	cout << "Cook" << name << ", " << surname << endl;
+	cout << name << ", " << surname << endl;
 }

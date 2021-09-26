@@ -14,6 +14,8 @@ Dish::Dish()
 	time = 0;
 
 	this->category = NONE;
+
+
 }
 
 Dish::Dish(char* name, int price, int time, Category& category, Cook& cook)
@@ -44,9 +46,7 @@ Dish::Dish(Dish& dish)
 
 Dish::~Dish()
 {
-	if (this->name) {
-		delete[] this->name;
-	}
+	
 }
 
 char* Dish::get_name()
@@ -76,7 +76,6 @@ Cook& Dish::get_cook()
 
 Dish& Dish::set_name(char* name)
 {
-	delete[] this->name;
 	this->name = new char[strlen(name) + 1];
 	strcpy_s(this->name, strlen(name) + 1, name);
 	return *this;
@@ -108,7 +107,30 @@ Dish& Dish::set_cook(Cook& cook)
 
 void Dish::show()
 {
-	cout << name << ", " << price << " грн, " << time << "сек, " << category << ", ";
+	cout << name << ", " << price << " грн, " << time << "сек, "; 
+	switch (category)
+	{
+	case NONE:
+		cout << "NONE" << ", ";
+		break;
+	case COLD_SNACKS:
+		cout << "холоднi закуски" << ", ";
+		break;
+	case FIRST_COURSES:
+		cout << "перша страва" << ", ";
+		break;
+	case SECOND_COURSES:
+		cout << "друга страва" << ", ";
+		break;
+	case DESSERTS:
+		cout << "десерт" << ", ";
+		break;
+	case DRINKS:
+		cout << "напiй" << ", ";
+		break;
+	default:
+		break;
+	}
 	cook.show();
 	cout << endl;
 }
