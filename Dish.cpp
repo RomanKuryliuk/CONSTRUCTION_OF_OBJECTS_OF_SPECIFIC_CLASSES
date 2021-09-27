@@ -76,6 +76,7 @@ Cook& Dish::get_cook()
 
 Dish& Dish::set_name(char* name)
 {
+	delete[] this->name;
 	this->name = new char[strlen(name) + 1];
 	strcpy_s(this->name, strlen(name) + 1, name);
 	return *this;
@@ -107,7 +108,7 @@ Dish& Dish::set_cook(Cook& cook)
 
 void Dish::show()
 {
-	cout << name << ", " << price << " грн, " << time << "сек, "; 
+	cout << name << ", " << price << " грн, " << time << "хв, "; 
 	switch (category)
 	{
 	case NONE:
@@ -132,5 +133,4 @@ void Dish::show()
 		break;
 	}
 	cook.show();
-	cout << endl;
 }

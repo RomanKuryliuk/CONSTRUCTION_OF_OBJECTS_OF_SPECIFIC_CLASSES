@@ -24,6 +24,9 @@ Order::Order(char* name, Date date, int number, Dish* dishes)
 
 	this->number = number;
 
+	delete[] this->dishes;
+	this->dishes = new Dish[number + 1];
+
 	for (int i = 0; i < this->number; i++) {
 		this->dishes[i].set_name(dishes[i].get_name());
 		this->dishes[i].set_price(dishes[i].get_price());
@@ -42,6 +45,7 @@ Order::Order(Order& order)
 
 	this->number = order.number;
 
+	this->dishes = new Dish[number + 1];
 	for (int i = 0; i < this->number; i++) {
 		this->dishes[i] = order.dishes[i];
 	}
@@ -126,5 +130,5 @@ void Order::short_show()
 		temp += this->dishes[i].get_time();
 	}
 
-	cout << temp << "сек" << endl;
+	cout << temp << "хв" << endl;
 }
